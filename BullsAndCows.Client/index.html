@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Bulls and Cows</title>
+
+    <link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="./css/styles.css">
+
+    <script src="./node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="./node_modules/navigo/lib/navigo.js"></script>
+    <script src=" ./node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+
+    <script src="./node_modules/systemjs/dist/system.js"></script>
+    <script>
+        SystemJS.config({
+            transpiler: 'plugin-babel',
+            map: {
+                'jquery': './node_modules/jquery/dist/jquery.min.js',
+                'handlebars': './node_modules/handlebars/dist/handlebars.js',
+                'constants': './app/utils/constants.js',
+                'plugin-babel': './node_modules/systemjs-plugin-babel/plugin-babel.js',
+                'systemjs-babel-build': './node_modules/systemjs-plugin-babel/systemjs-babel-browser.js'
+            }
+        });
+
+        SystemJS.import('./app/app.js');
+    </script>
+</head>
+
+<body>
+    <header class="navbar navbar-inverse navbar-fixed-top"></header>
+
+    <main id="main" class="container body-content">
+
+    </main>
+
+    <footer>
+
+    </footer>
+</body>
+
+</html>
