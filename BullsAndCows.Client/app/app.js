@@ -12,4 +12,5 @@ navigo.on(() => {
         gameController.loadSingleGame(mainContainer);
         homeController.home(mainContainer);
     })
+    .on('/single-bot', gameController.startBotGame)
     .resolve();

@@ -1,3 +1,4 @@
+import ai from '../utils/ai.js'
 import data from '../utils/data.js'
 import templates from '../utils/templateLoader.js'
 
@@ -38,6 +39,9 @@ export default {
                 $container.on('click', '#btn-start-single-game', startNewGame);
                 $container.on('click', '#btn-make-guess', makeGuess);
             })
+    },
+    startBotGame: () => {
+        ai.guessNumber();
     },
     startGame: () => {
         data.games.startNewSingle()
