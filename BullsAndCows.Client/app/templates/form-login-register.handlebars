@@ -1,0 +1,47 @@
+<div id="panel-users" class="col-md-4 pull-right">
+	<ul class="nav nav-tabs">
+		<li role="presentation" class="active" data-form="login"><a href="#">Login</a></li>
+		<li role="presentation" data-form="register"><a href="#">Register</a></li>
+	</ul>
+
+	<div class="text-center" style="padding:20px 0">
+		<!-- Login Form -->
+		<div class="form-container form-login">
+			<form id="login-form" class="text-left" novalidate="novalidate">
+				<div class="main-login-form">
+					<div class="login-group">
+						<div class="form-group">
+							<input type="text" class="form-control username" name="lg_username" placeholder="username" value="evlogi@some.com">
+						</div>
+						<div class="form-group">
+							<input type="password" class="form-control password" name="lg_password" placeholder="password" value="Evlogi123">
+						</div>
+					</div>
+					<button id="btn-login" type="submit" class="btn btn-primary">Login</button>
+				</div>
+			</form>
+		</div>
+		<!-- end:Login Form -->
+
+		<!-- Register Form -->
+		<div class="form-container form-register" style="display: none;">
+			<form id="register-form" class="text-left" novalidate="novalidate">
+				<div class="main-register-form">
+					<div class="register-group">
+						<div class="form-group">
+							<input type="text" class="form-control username" placeholder="username">
+						</div>
+						<div class="form-group">
+							<input type="password" class="form-control password" placeholder="password">
+						</div>
+						<div class="form-group">
+							<input type="password" class="form-control confirm-password" placeholder="repeat  password">
+						</div>
+					</div>
+					<button id="btn-register" type="submit" class="btn btn-primary">Register</button>
+				</div>
+			</form>
+		</div>
+		<!-- end:Register Form -->
+	</div>
+</div>

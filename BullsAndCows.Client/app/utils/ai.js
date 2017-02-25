@@ -103,30 +103,30 @@ class AI {
                 }
             })
 
-        nums.filter(v => v.isPresent !== false)
-            .forEach(v => {
-                console.log(`${v.val} - ${v.isPresent} - pos [${v.pos}] & bulls ${v.bulls}`)
-            })
+        // nums.filter(v => v.isPresent !== false)
+        //     .forEach(v => {
+        //         console.log(`${v.val} - ${v.isPresent} - pos [${v.pos}] & bulls ${v.bulls}`)
+        //     })
 
         this.findCombinations(this.finalGuess.slice(0), this.finalGuess.indexOf('-'));
         return this.getFinalGuess();
     }
-    guessNumber() {
-        Promise.all(new Array(10).fill(1).map((v, i) => data.games.makeGuess(this.guesses[i])))
+    guessNumber($container) {
+        let allGuesses = [];
+        return Promise.all(new Array(10).fill(1).map((v, i) => data.games.makeGuess(this.guesses[i])))
             .then((resp) => {
+                allGuesses = resp;
                 return this.processResults(resp, this.nums)
             })
             .then((final) => {
                 return Promise.all(new Array(final.length).fill(1).map((v, i) => data.games.makeGuess(final[i])))
             })
             .then((resp) => {
-                resp.forEach((v) => {
-                    console.log(`Num: ${v.Number} - cows = ${v.Cows}, bulls = ${v.Bulls}`)
-                })
+                return allGuesses.concat(resp);
             })
     }
 }
 
 export default {
-    guessNumber: () => new AI().guessNumber()
+    guessNumber: ($container) => new AI().guessNumber($container)
 }

@@ -19,3 +19,8 @@ select,
 textarea {
     max-width: 280px;
 }
+
+.digits {
+    width: 60%;
+    display: inline-block;
+}

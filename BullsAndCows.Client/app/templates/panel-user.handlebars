@@ -1,0 +1,46 @@
+<div id="panel-users" class="col-md-4 pull-right">
+	<ul class="nav nav-tabs">
+		<li role="presentation" data-form="play" class="active"><a href="#">Single Player</a></li>
+        <li role="presentation" data-form="multi"><a href="#">Multi Player</a></li>
+	</ul>
+
+	<div class="text-center" style="padding:20px 0">
+		<!-- New Game Form -->
+		<div class="form-user panel panel-default">
+			<form id="user-form" class="text-left panel-body" novalidate="novalidate">
+				<div class="main-user-form">
+                    <button id="btn-new" type="submit" class="btn btn-danger">New Game</button>
+					<button id="btn-bot" type="submit" class="btn btn-info">Start Bot</button>
+					<button id="btn-logout" type="submit" class="btn btn-default pull-right">Logout</button>
+				</div>
+			</form>
+		</div>
+		<!-- end:New Game Form -->
+
+		<!-- Play Form -->
+		<div class="form-container form-play panel panel-default">
+            <div class="panel-heading">Submit a number</div>
+			<form id="play-form" class="text-left panel-body" novalidate="novalidate">
+				<div class="main-play-form">
+					<div class="form-group">
+                        <input type="text" class="form-control digits" tabindex="0">
+					    <button id="btn-play" type="submit" class="btn btn-success pull-right">Submit</button>
+					</div>
+                    <div>
+                    </div>
+				</div>
+			</form>
+		</div>
+		<!-- end:Play Form -->
+                
+		<!-- Multi Form -->
+		<div class="form-container form-multi panel panel-default" style="display: none;">
+			<form id="multi-form" class="text-left panel-body" novalidate="novalidate">
+				<div class="main-multi-form">
+                    TBA
+				</div>
+			</form>
+		</div>
+		<!-- end:Multi Form -->
+	</div>
+</div>

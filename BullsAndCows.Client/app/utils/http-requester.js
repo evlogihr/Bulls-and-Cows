@@ -8,7 +8,7 @@ export default {
                 type: 'GET',
                 headers: headers,
                 success: (data) => resolve(data),
-                erros: (err) => reject(err)
+                error: (err) => reject(err)
             })
         })
     },
@@ -34,7 +34,7 @@ export default {
                 headers: headers,
                 data: JSON.stringify(data),
                 success: (data) => resolve(data),
-                erros: (err) => reject(err)
+                error: (err) => reject(err)
             })
         })
     },
@@ -47,7 +47,7 @@ export default {
                 headers: headers,
                 data: JSON.stringify(data),
                 success: (data) => resolve(data),
-                erros: (err) => reject(err)
+                error: (err) => reject(err)
             })
         })
     }
