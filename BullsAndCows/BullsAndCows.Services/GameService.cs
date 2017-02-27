@@ -25,6 +25,13 @@
             this.guessRepo = new EFRepository<Guess>(context);
         }
 
+        public GameService(DbContext context, IRepository<ApplicationUser> usersRepo, IRepository<Game> gamesRepo, IRepository<Guess> guessRepo)
+        {
+            this.usersRepo = usersRepo;
+            this.gamesRepo = gamesRepo;
+            this.guessRepo = guessRepo;
+        }
+
         public Guid StartGame(string userId)
         {
             var number = Engine.GenerateNumber();
