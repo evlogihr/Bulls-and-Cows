@@ -58,9 +58,9 @@
         [HttpGet]
         public IHttpActionResult Guess(Guid gameId, string guess)
         {
-            if (string.IsNullOrWhiteSpace(guess) || guess.Length < 0 || 4 < guess.Length)
+            if (string.IsNullOrWhiteSpace(guess) || guess.Length != 4)
             {
-                return Content(HttpStatusCode.BadRequest, "");
+                return Content(HttpStatusCode.BadRequest, "The number should contain 4 digits");
             }
 
             var userId = User.Identity.GetUserId();
