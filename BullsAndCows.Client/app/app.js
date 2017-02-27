@@ -82,6 +82,7 @@ function loadEvents($container) {
         $('#panel-results').find('tbody').html('');
         gamesController
             .startGame($('#panel-active-games').find('#list-active-games'))
+            .then((resp) => gamesController.loadGame($container, resp))
             .then((resp) => toastr.success('Successfulluy started a new game'))
             .catch((err) => toastr.error(JSON.parse(err.responseText)));
 

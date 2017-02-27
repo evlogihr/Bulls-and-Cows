@@ -29,7 +29,10 @@ export default {
     },
     startGame: ($container) => {
         return Promise.all([data.games.startNewSingle(), templates.load('active-game')])
-            .then(([resp, template]) => $container.append(template(resp)));
+            .then(([resp, template]) => {
+                $container.append(template(resp))
+                return resp;
+            });
     },
     guessNumber: ($target, $resultsContainer) => {
         let $form = $target.parents('form'),

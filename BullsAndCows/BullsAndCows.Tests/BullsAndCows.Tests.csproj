@@ -37,6 +37,14 @@
       <HintPath>..\packages\Castle.Core.4.0.0\lib\net45\Castle.Core.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.VisualStudio.TestPlatform.TestFramework, Version=14.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\MSTest.TestFramework.1.1.11\lib\net45\Microsoft.VisualStudio.TestPlatform.TestFramework.dll</HintPath>
       <Private>True</Private>
@@ -58,6 +66,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -71,15 +80,16 @@
     <Compile Include="Core\EngineTests\EvaluateGuess_Should.cs" />
     <Compile Include="Core\EngineTests\GenerateNumber_Should.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\GameServiceTests\StartGame_Should.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Core\Results\GameResultTests\" />
     <Folder Include="Core\Results\GuessResultTests\" />
     <Folder Include="Data\Models\" />
-    <Folder Include="Services\GameServiceTests\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BullsAndCows.Core\BullsAndCows.Core.csproj">
@@ -93,6 +103,10 @@
     <ProjectReference Include="..\BullsAndCows.Services\BullsAndCows.Services.csproj">
       <Project>{73ee7fdd-3556-4508-9ca7-351e389dd340}</Project>
       <Name>BullsAndCows.Services</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BullsAndCows.Web\BullsAndCows.Web.csproj">
+      <Project>{2c9351f5-2474-42ab-b7a6-1effd8441482}</Project>
+      <Name>BullsAndCows.Web</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
