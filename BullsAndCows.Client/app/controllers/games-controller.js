@@ -17,6 +17,10 @@ export default {
 
                     let result = resp.filter((v) => v.bulls === 4)[0];
                     result.count = resp.length;
+
+                    if (result) {
+                        $(`button[data-id=${gameId}]`).addClass('btn-success');
+                    }
                     return result;
                 });
         } else {
