@@ -42,10 +42,14 @@
   <ItemGroup>
     <Compile Include="Engine.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Results\GameResult.cs" />
     <Compile Include="Results\GuessResult.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Utility\" />
+    <ProjectReference Include="..\BullsAndCows.Data\BullsAndCows.Data.csproj">
+      <Project>{507AAF64-FC69-483A-A82C-95CEDD610CE9}</Project>
+      <Name>BullsAndCows.Data</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

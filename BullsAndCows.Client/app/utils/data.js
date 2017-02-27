@@ -1,27 +1,30 @@
 import req from './http-requester.js'
 import constants from './constants.js'
 
+function getAccessTokenHeaders() {
+    let accesstoken = localStorage.getItem('accessToken'),
+        authHeaders = {};
+
+    if (accesstoken) {
+        authHeaders.Authorization = `Bearer ${accesstoken}`;
+    }
+
+    return authHeaders;
+}
+
 export default {
     games: {
         startNewSingle: () => {
-            let accesstoken = localStorage.getItem('accessToken'),
-                authHeaders = {};
-
-            if (accesstoken) {
-                authHeaders.Authorization = `Bearer ${accesstoken}`;
-            }
-
-            return req.postJSON(`${constants.serverUrl}/api/game`, null, authHeaders);
+            return req.postJSON(`${constants.serverUrl}/api/game`, null, getAccessTokenHeaders());
         },
-        makeGuess: (guess) => {
-            let accesstoken = localStorage.getItem('accessToken'),
-                authHeaders = {};
-
-            if (accesstoken) {
-                authHeaders.Authorization = `Bearer ${accesstoken}`;
-            }
-
-            return req.get(`${constants.serverUrl}/api/game?guess=${guess}`, authHeaders);
+        makeGuess: (gameId, guess) => {
+            return req.get(`${constants.serverUrl}/api/game?gameId=${gameId}&guess=${guess}`, getAccessTokenHeaders());
+        },
+        getActiveGames: () => {
+            return req.get(`${constants.serverUrl}/api/game/active`, getAccessTokenHeaders());
+        },
+        getGame: (gameId) => {
+            return req.get(`${constants.serverUrl}/api/game/active?gameId=${gameId}`, getAccessTokenHeaders());
         }
     },
     users: {

@@ -1,0 +1,12 @@
+<div class="col-md-2 col-sm-2 col-xs-2 pull-right">
+    <div id="panel-active-games" class="panel panel-default">
+        <div class="panel-heading">Active Games</div>
+        <ul id="list-active-games" class="list-group">
+            {{#this}}
+            <li class="list-group-item">                
+                <button type="button" class="btn btn-default" data-id={{this}}>Game {{@index}}</button>
+            </li>
+            {{/this}}
+        </ul>        
+    </div>
+</div>

@@ -19,7 +19,8 @@ class Digit {
 }
 
 class AI {
-    constructor() {
+    constructor(gameId) {
+        this.gameId = gameId;
         this.nums = new Array(10).fill(1).map((v, i) => new Digit(i));
         this.hasFinalGuess = false;
         this.finalGuess = ['-', '-', '-', '-'];
@@ -33,7 +34,7 @@ class AI {
         return this.possibilities;
     }
     total(guess) {
-        return guess.Cows + guess.Bulls;
+        return guess.cows + guess.bulls;
     }
     findCombinations(numArr, position) {
         if (position < 0 || 3 < position) {
@@ -56,12 +57,12 @@ class AI {
         }
     }
     processResult(guess, prevGuess, nums) {
-        let currentGuessDigits = guess.Number.split('').map(d => nums[d]), // nums.filter(v => guess.Number.indexOf(v.val) !== -1),
+        let currentGuessDigits = guess.number.split('').map(d => nums[d]), // nums.filter(v => guess.number.indexOf(v.val) !== -1),
             presentDigits = currentGuessDigits.filter(v => v.isPresent === true),
             notPresentDigits = currentGuessDigits.filter(v => v.isPresent === false),
             unknownDigits = currentGuessDigits.filter(v => v.isPresent === null),
-            onlyCows = guess.Bulls === 0 && guess.Cows > 0,
-            onlyBulls = guess.Bulls > 0 && guess.Cows === 0,
+            onlyCows = guess.bulls === 0 && guess.cows > 0,
+            onlyBulls = guess.bulls > 0 && guess.cows === 0,
             nonGuessed = this.total(guess) === 0;
 
         if (onlyCows) { // if no bulls, mark that all are not in their places
@@ -78,11 +79,11 @@ class AI {
 
         // compare with previous guess
         if (prevGuess && this.total(guess) < this.total(prevGuess)) {
-            nums[prevGuess.Number[0]].is();
-            nums[guess.Number[3]].not();
+            nums[prevGuess.number[0]].is();
+            nums[guess.number[3]].not();
         } else if (prevGuess && this.total(guess) > this.total(prevGuess)) {
-            nums[prevGuess.Number[0]].not();
-            nums[guess.Number[3]].is();
+            nums[prevGuess.number[0]].not();
+            nums[guess.number[3]].is();
         }
     }
     processResults(guess, nums) {
@@ -111,15 +112,15 @@ class AI {
         this.findCombinations(this.finalGuess.slice(0), this.finalGuess.indexOf('-'));
         return this.getFinalGuess();
     }
-    guessNumber($container) {
+    guessNumber() {
         let allGuesses = [];
-        return Promise.all(new Array(10).fill(1).map((v, i) => data.games.makeGuess(this.guesses[i])))
+        return Promise.all(new Array(10).fill(1).map((v, i) => data.games.makeGuess(this.gameId, this.guesses[i])))
             .then((resp) => {
                 allGuesses = resp;
                 return this.processResults(resp, this.nums)
             })
             .then((final) => {
-                return Promise.all(new Array(final.length).fill(1).map((v, i) => data.games.makeGuess(final[i])))
+                return Promise.all(new Array(final.length).fill(1).map((v, i) => data.games.makeGuess(this.gameId, final[i])))
             })
             .then((resp) => {
                 return allGuesses.concat(resp);
@@ -128,5 +129,5 @@ class AI {
 }
 
 export default {
-    guessNumber: ($container) => new AI().guessNumber($container)
+    guessNumber: (gameId) => new AI(gameId).guessNumber()
 }

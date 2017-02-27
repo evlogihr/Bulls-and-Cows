@@ -3,9 +3,6 @@ import data from '../utils/data.js'
 import templates from '../utils/templateLoader.js'
 
 export default {
-    loadEvents: ($container) => {
-        loadEvents($container);
-    },
     loadLoginRegForm: ($container) => {
         return templates.load('form-login-register')
             .then((resp) => $container.append(resp))
@@ -47,5 +44,9 @@ export default {
     loadUserUI: ($container) => {
         return templates.load('panel-user')
             .then((resp) => $container.append(resp))
+    },
+    loadActiveGames($container) {
+        return Promise.all([data.games.getActiveGames(), templates.load('panel-active-games')])
+            .then(([resp, template]) => $container.append(template(resp)));
     }
 }

@@ -1,10 +1,16 @@
 ﻿namespace BullsAndCows.Data.Models
 {
     using System;
+    using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
 
     public class Game
     {
+        public Game()
+        {
+            this.Guesses = new List<Guess>();
+        }
+
         [Key]
         public Guid Id { get; set; }
 
@@ -19,5 +25,7 @@
         public bool Solved { get; set; }
 
         public DateTime Date { get; set; }
+
+        public virtual ICollection<Guess> Guesses { get; set; }
     }
 }

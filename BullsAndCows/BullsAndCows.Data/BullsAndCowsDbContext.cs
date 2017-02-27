@@ -16,6 +16,8 @@
 
         public IDbSet<Game> Games { get; set; }
 
+        public IDbSet<Guess> Guesses { get; set; }
+
         public static ApplicationDbContext Create()
         {
             return new ApplicationDbContext();

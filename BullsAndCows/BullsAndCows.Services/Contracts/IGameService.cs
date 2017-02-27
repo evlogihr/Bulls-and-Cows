@@ -1,13 +1,19 @@
 ﻿namespace BullsAndCows.Services.Contracts
 {
     using System;
+    using System.Collections.Generic;
 
     using BullsAndCows.Core.Results;
+    using BullsAndCows.Data.Models;
 
-    interface IGameService
+    public interface IGameService
     {
-        void StartGame();
+        Guid StartGame(string userId);
+
+        IEnumerable<Guid> GetUserActiveGameIds(string userId);
+
+        GameResult GetGame(Guid gameId);
         
-        GuessResult Guess(Guid userId, string guess);
+        GuessResult Guess(string user, Guid gameId, string guess);
     }
 }

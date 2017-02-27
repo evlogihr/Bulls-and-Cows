@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BullsAndCows.Console", "Bul
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BullsAndCows.Services", "BullsAndCows.Services\BullsAndCows.Services.csproj", "{73EE7FDD-3556-4508-9CA7-351E389DD340}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BullsAndCows.Tests", "BullsAndCows.Tests\BullsAndCows.Tests.csproj", "{834E9BF1-8D70-4B95-8D8F-F2004C51C2CB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{73EE7FDD-3556-4508-9CA7-351E389DD340}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{73EE7FDD-3556-4508-9CA7-351E389DD340}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{73EE7FDD-3556-4508-9CA7-351E389DD340}.Release|Any CPU.Build.0 = Release|Any CPU
+		{834E9BF1-8D70-4B95-8D8F-F2004C51C2CB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{834E9BF1-8D70-4B95-8D8F-F2004C51C2CB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{834E9BF1-8D70-4B95-8D8F-F2004C51C2CB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{834E9BF1-8D70-4B95-8D8F-F2004C51C2CB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

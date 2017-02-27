@@ -2,9 +2,11 @@
 {
     using System;
     using System.Collections.Generic;
+    using System.Linq;
     using System.Text;
 
     using BullsAndCows.Core.Results;
+    using Data.Models;
 
     public class Engine
     {
@@ -63,6 +65,14 @@
             }
 
             return result;
+        }
+
+        public static GameResult EvaluateGame(Game game)
+        {
+            var gameResult = GameResult.FromModel(game);
+            gameResult.Guesses = gameResult.Guesses
+                .Select(g => EvaluateGuess(game.Number, g.Number));
+            return gameResult;
         }
     }
 }

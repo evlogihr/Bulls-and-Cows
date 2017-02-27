@@ -10,11 +10,12 @@ userController
     .then((resp) => {
         loadEvents($container);
         if (!resp) {
-            userController.loadLoginRegForm($container);
+            userController
+                .loadLoginRegForm($container);
         } else {
             userController
                 .loadUserUI($container, resp)
-                .then(() => gamesController.loadGame($container));
+                .then((userId) => userController.loadActiveGames($container));
         }
     });
 
@@ -36,26 +37,31 @@ function loadEvents($container) {
     $container.on('click', '#btn-login', (ev) => {
         ev.stopPropagation();
         ev.preventDefault();
+
         userController.login($(ev.target));
     })
 
     $container.on('click', '#btn-register', (ev) => {
         ev.stopPropagation();
         ev.preventDefault();
+
         userController.register($(ev.target));
     })
 
     $container.on('click', '#btn-logout', (ev) => {
         ev.stopPropagation();
         ev.preventDefault();
+
         userController.logout();
     })
 
     $container.on('click', '#btn-play', (ev) => {
         ev.stopPropagation();
         ev.preventDefault();
-        gamesController.guessNumber($(ev.target), $('#panel-results').find('tbody'))
-            .then((resp) => toastr.success(`You got ${resp.Bulls} bulls and ${resp.Cows} cows`))
+
+        gamesController
+            .guessNumber($(ev.target), $('#panel-results').find('tbody'))
+            .then((resp) => toastr.success(`You got ${resp.bulls} bulls and ${resp.cows} cows`))
             .catch((err) => toastr.error(JSON.parse(err.responseText)));
     })
 
@@ -74,9 +80,23 @@ function loadEvents($container) {
         ev.preventDefault();
 
         $('#panel-results').find('tbody').html('');
-        gamesController.startGame()
-            .then((resp) => toastr.success('Successfullu started a new game'))
+        gamesController
+            .startGame($('#panel-active-games').find('#list-active-games'))
+            .then((resp) => toastr.success('Successfulluy started a new game'))
             .catch((err) => toastr.error(JSON.parse(err.responseText)));
 
+    })
+
+    $container.on('click', '#panel-active-games button', (ev) => {
+        ev.stopPropagation();
+        ev.preventDefault();
+        let $target = $(ev.target),
+            gameId = $target.attr('data-id');
+
+        $container.find('.panel-container').remove();
+        gamesController
+            .loadGame($container, gameId)
+            .then((resp) => toastr.success('Successfulluy loaded the game game'))
+            .catch((err) => toastr.error(JSON.parse(err.responseText)));
     })
 };
